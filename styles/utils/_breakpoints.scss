@@ -29,7 +29,7 @@ $screen-xl-min: 1201px; //very large screen or tv
 }
 
 @mixin rw($screen) {
-    @media screen and (min-width: $screen+'px'){
+    @media screen and (min-width: $screen){
         @content;
     }
 }

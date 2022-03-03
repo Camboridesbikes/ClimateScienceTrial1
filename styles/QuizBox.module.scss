@@ -1,0 +1,196 @@
+@import './utils/breakpoints', './utils/colors';
+
+//Variables for the animation keyframes that need to be consitent for all of them; 
+//change these to change animation values
+
+$duration : 10s; //
+
+@mixin prefixProp($name, $val){
+  -webkit-#{$name} : #{$val};
+  -moz-#{$name} : #{$val};
+  #{name} : #{$val};
+}
+
+@mixin animate($animation,$duration,$method, $delay, $times){
+  @include prefixProp(animation-name, $animation);
+  @include prefixProp(animation-duration, $duration);
+  @include prefixProp(animation-timing-function, $method);
+  @include prefixProp(animation-delay, $delay);
+  @include prefixProp(animation-iteration-count, $times);;
+
+}
+
+@mixin keyframes($name){
+  @-webkit-keyframes#{$name}{
+    @content;
+}
+  @-moz-keyframes #{$name}{
+    @content;
+}
+  @keyframes #{$name}{
+      @content;
+  }
+
+}
+
+@include keyframes(fadeInOut) {
+  //start empty
+  0% {
+    opacity: 0;
+  }
+  10%,85%{
+    opacity: 1
+  }
+  //fade prompt text in
+  100%{
+    opacity: 0;
+  }
+}
+
+@include keyframes(slideUp){
+  0%{
+    opacity: 1;
+    margin-top: 100%;
+  }
+  10%,85%{
+  }
+
+  50%, 85%{
+    margin-top: .2em;
+    opacity: 1;
+  }
+  100%{
+    margin-top: .2em;
+    opacity: 0;
+  }
+
+}
+
+@include keyframes(correct){
+  0%,70%{
+    background-color: white;
+  }
+  75%, 100%{
+    background-color: $primary;
+  }
+}
+
+.quizBox {
+  height: 20em;
+  width: 30em;
+  padding: 1em 2em;
+    border-width: 1px;
+    border-color: $primary;
+    border-style: solid;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    overflow: hidden;   
+    
+  }
+
+  .prompt{
+    color: $secondary;
+    padding: 1% 10%;
+    text-align: center;
+    font-weight: bolder;
+    font-size: large;
+    margin-bottom: .5em;
+
+    @include animate(fadeInOut, 10s, cubic-bezier(0.25, 0.1, 0.04, 1.01), 0s, infinite);
+    
+  }
+  
+  .choices{
+    display: flex;
+    margin:.5em 0;
+    padding: 0 7% 0 5%;
+    height: 4em;
+    border-radius: 50px;
+    box-shadow: -1px 3px 8px 0px #81818159;
+    align-items: center;
+    justify-content: space-between;
+
+    @include animate(slideUp, 10s, cubic-bezier(0.25, 0.1, 0.04, 1.01), 0s, infinite); 
+  }
+  
+  .dot{
+    display: block;
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 50%;
+    border-width: 3px;
+    border-color: $primary;
+    border-style: solid;
+  }
+  
+  .choiceText{
+    color: $primary;
+    font-weight: 600;
+    width: 80%;
+  }
+
+  .correct{
+    @include animate(correct, 10s, cubic-bezier(0.25, 0.1, 0.04, 1.01), 0s, infinite)
+  }
+
+  
+
+// @-moz-keyframes quiz {
+//   //start empty
+//   0%{
+//     .quizBox .prompt{
+//       opacity: 0%;
+//     }
+//   }
+//   //fade prompt text in
+//   20%{
+//     .quizBox .prompt{
+//       opacity: 100%;
+//     }
+
+//   }
+//   //slide questions up from below
+//   40%{
+
+//   }
+//   //select right answer
+//   60%{
+
+//   }
+//   //fade out
+//   80%{
+
+//   }
+// }
+
+// @-webkit-keyframes quiz {
+// //start empty
+// 0%{
+//   .prompt{
+//     opacity: 0%;
+//   }
+// }
+// //fade prompt text in
+// 20%{
+//   .prompt{
+//     opacity: 100%;
+//   }
+
+// }
+// //slide questions up from below
+// 40%{
+
+// }
+// //select right answer
+// 60%{
+
+// }
+// //fade out
+// 80%{
+
+// }
+// }
+
+  
