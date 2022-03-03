@@ -91,31 +91,13 @@ $duration : 10s; //
     overflow: hidden;   
     
   }
-  //subsequent code for quizbox takes care of responsiveness for this component
-  @include sm{
-    .quizBox{
-      font-size: small;
-      width: 30em;
-    }
-  }
-  
-  @include md{
-    .quizBox{
-      font-size: medium;
-    }
-  }
-  
-  @include lg{
-    .quizBox{
-      font-size: large;
-    }
-  }
 
   .prompt{
     color: $secondary;
-    padding: 1% 10%;
+    padding: 1% 7%;
     text-align: center;
     font-weight: bolder;
+    font-size: small;
     margin-bottom: .5em;
 
     @include animate(fadeInOut, 10s, cubic-bezier(0.25, 0.1, 0.04, 1.01), 0s, infinite);
@@ -155,62 +137,33 @@ $duration : 10s; //
     @include animate(correct, 10s, cubic-bezier(0.25, 0.1, 0.04, 1.01), 0s, infinite)
   }
 
+  //subsequent code for quizbox takes care of responsiveness for this component
+  @include sm{
+    .quizBox{
+      font-size: small;
+      width: 32em;
+    }
+    .prompt{
+      font-size: medium;
+      padding: 1% 10%;
+    }
+  }
   
-
-// @-moz-keyframes quiz {
-//   //start empty
-//   0%{
-//     .quizBox .prompt{
-//       opacity: 0%;
-//     }
-//   }
-//   //fade prompt text in
-//   20%{
-//     .quizBox .prompt{
-//       opacity: 100%;
-//     }
-
-//   }
-//   //slide questions up from below
-//   40%{
-
-//   }
-//   //select right answer
-//   60%{
-
-//   }
-//   //fade out
-//   80%{
-
-//   }
-// }
-
-// @-webkit-keyframes quiz {
-// //start empty
-// 0%{
-//   .prompt{
-//     opacity: 0%;
-//   }
-// }
-// //fade prompt text in
-// 20%{
-//   .prompt{
-//     opacity: 100%;
-//   }
-
-// }
-// //slide questions up from below
-// 40%{
-
-// }
-// //select right answer
-// 60%{
-
-// }
-// //fade out
-// 80%{
-
-// }
-// }
-
+  @include md{
+    .quizBox{
+      font-size: medium;
+    }
+    .prompt{
+      font-size:large;
+      padding: 1% 10%;
+    }
+  }
   
+  @include lg{
+    .quizBox{
+      font-size: large;
+    }
+    .prompt{
+      font-size: larger;
+    }
+  }
