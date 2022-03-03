@@ -1,33 +1,45 @@
-import { Component, FunctionComponent } from "react";
+/**
+ * This coomponent contains a stylized and animated 'quiz box' with a prompt and three questions. 
+ */
+
+import React from "react";
 import styles from '../../styles/QuizBox.module.scss';
 
 
-const Quizbox= ({}) => {
+type quizBoxProps = {
+    prompt: string,
+    q1: string,
+    q2: string,
+    q3: string
+}
+
+
+const Quizbox= ({prompt, q1, q2, q3} : quizBoxProps) => {
 
     return (
         <div className={styles.quizBox}>
         <span className={styles.prompt}>
-          Which of the following statements about electricity is not true?
+            {prompt}
         </span>
         {/* choices */}
         <div className={styles.choices}>
           <span className={styles.dot}></span>
           <p className={styles.choiceText}>
-            Electricity is measured in units called Watts
+              {q1}
           </p>
         </div>
         
         <div className={styles.choices}>
           <span className={styles.dot}></span>
           <p className={styles.choiceText}>
-            Electricity flows at the speed of light
+              {q2}
           </p>
         </div>
         
         <div className={styles.choices}>
           <span className={`${styles.dot} , ${styles.correct}`}></span>
           <p className={styles.choiceText}>
-            Electricity is a primary energy source
+              {q3}
           </p>
         </div>
         
