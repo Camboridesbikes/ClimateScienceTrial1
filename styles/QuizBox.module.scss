@@ -91,6 +91,7 @@ $duration : 10s; //
     overflow: hidden;   
     
   }
+  //subsequent code for quizbox takes care of responsiveness for this component
   @include sm{
     .quizBox{
       font-size: small;
@@ -100,13 +101,13 @@ $duration : 10s; //
   
   @include md{
     .quizBox{
-      font-size: large;
+      font-size: medium;
     }
   }
   
   @include lg{
     .quizBox{
-      font-size: x-large;
+      font-size: large;
     }
   }
 
